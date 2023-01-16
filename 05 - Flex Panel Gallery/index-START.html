@@ -25,8 +25,15 @@
 
     .panels {
       display: flex;
+      flex-direction: column;
       min-height: 100vh;
       overflow: hidden;
+    }
+
+    @media screen and (min-width: 768px) {
+      .panels {
+        flex-direction: row;
+      }
     }
 
     .panel {
@@ -34,7 +41,7 @@
       flex-direction: column;
       justify-content: center;
       flex: 1;
-      background: #6B0F9C;
+      background: #c6c6c6;
       box-shadow: inset 0 0 0 5px rgba(255,255,255,0.1);
       color: white;
       text-align: center;
@@ -48,6 +55,7 @@
       font-size: 20px;
       background-size: cover;
       background-position: center;
+      overflow: hidden;
     }
 
     .panel1 { background-image:url(https://source.unsplash.com/gYl-UtwNg_I/1500x1500); }
@@ -86,16 +94,30 @@
       text-transform: uppercase;
       font-family: 'Amatic SC', cursive;
       text-shadow: 0 0 4px rgba(0, 0, 0, 0.72), 0 0 14px rgba(0, 0, 0, 0.45);
-      font-size: 2em;
+      font-size: 1.5em;
     }
     
     .panel p:nth-child(2) {
-      font-size: 4em;
+      font-size: 3em;
     }
 
     .panel.open {
-      font-size: 40px;
+      font-size: 30px;
       flex: 5;
+    }
+
+    @media screen and (min-width: 768px) {
+      .panel p {
+        font-size: 2em;
+      }
+      
+      .panel p:nth-child(2) {
+        font-size: 4em;
+      }
+
+      .panel.open {
+        font-size: 40px;
+      }
     }
   </style>
 
@@ -136,7 +158,6 @@
     }
 
     function toggleActive(e) {
-      console.log(e.propertyName);
       if(e.propertyName.includes('flex')) {
         this.classList.toggle('open-active');
       }
