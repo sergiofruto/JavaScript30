@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>32 - Shape Morphing</title>
+</head>
+<style>
+  :root {
+    --color-1: #005F73;
+    --color-2: #0A9396;
+    --color-3: #EE9B00;
+    --color-4: #E9D8A6;
+    --color-5: #CA6702;
+    --color-6: #BB3E03;
+    --color-7: #AE2012;
+  }
+
+  body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(10 10 10);
+    color: white;
+    overflow: hidden;
+    display: grid;
+    place-items:center;
+  }
+
+  #wrapper {
+    width: 90vmin;
+    aspect-ratio: 1.618;
+    border: 5px solid cornflowerblue;
+    position: relative;
+  }
+
+  #wrapper > .shape {
+    width: 30%;
+    height: 30%;
+    background-color: rgb(189, 104, 104);
+    position: absolute;
+    transition: left, top, height, width, border-radius;
+    transition-duration: 750ms;
+    transition-timing-function: ease-in-out;
+  }
+
+  #wrapper[data-roundness="1"] > .shape {
+    border-radius: 6rem;
+  }
+
+  #wrapper[data-roundness="2"] > .shape {
+    border-radius: 0;
+  }
+
+  #wrapper[data-configuration="1"] > .shape:nth-child(1) {
+    left: 0;
+    top: 0;
+    height: 50%;
+    width: 20%;
+  }
+
+  #wrapper[data-configuration="1"] > .shape:nth-child(2) {
+    left: 20%;
+    top: 0;
+    height: 50%;
+    width: 30%;
+  }
+
+  #wrapper[data-configuration="1"] > .shape:nth-child(3) {
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 50%;
+  }
+
+  #wrapper[data-configuration="1"] > .shape:nth-child(4) {
+    left: 0%;
+    top: 50%;
+    height: 50%;
+    width: 30%;
+  }
+
+  #wrapper[data-configuration="1"] > .shape:nth-child(5) {
+    left: 30%;
+    top: 50%;
+    height: 50%;
+    width: 20%;
+  }
+
+  #wrapper[data-configuration="1"] > .shape:nth-child(6) {
+    left: 70%;
+    top: 50%;
+    height: 50%;
+    width: 30%;
+  }
+
+  #wrapper[data-configuration="1"] > .shape:nth-child(7) {
+    left: 85%;
+    top: 75%;
+    height: 25%;
+    width: 15%;
+  }
+  
+  #wrapper > .shape:nth-child(1) {
+    background-color: var(--color-1);
+  }
+  #wrapper > .shape:nth-child(2) {
+    background-color: var(--color-2);
+  }
+  #wrapper > .shape:nth-child(3) {
+    background-color: var(--color-3);
+  }
+  #wrapper > .shape:nth-child(4) {
+    background-color: var(--color-4);
+  }
+  #wrapper > .shape:nth-child(5) {
+    background-color: var(--color-5);
+  }
+  #wrapper > .shape:nth-child(6) {
+    background-color: var(--color-6);
+  }
+  #wrapper > .shape:nth-child(7) {
+    background-color: var(--color-7);
+  }
+</style>
+<body>
+  <div id="wrapper" data-configuration="1" data-roundness="1">
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+    <div class="shape"></div>
+  </div>
+  <script>
+    
+  </script>
+</body>
+</html>
