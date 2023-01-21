@@ -26,21 +26,40 @@
 </style>
 <body>
   <div id="tiles"></div>
+  <script src="anime.min.js"></script>
   <script>
-    const wrapper = document.querySelector('#tiles');
+    // import anime from 'animejs/lib/anime.es.js';
+    const wrapper = document.getElementById("tiles");
+    let columns = Math.floor(document.body.clientWidth / 50);
+    let rows = Math.floor(document.body.clientHeight / 50);
+
+    const colors = [
+      "rgb(247, 37, 133)",
+      "rgb(181, 23, 158)",
+      "rgb(72, 12, 168)",
+      "rgb(63, 55, 201)",
+      "rgb(72, 149, 239)",
+      "rgb(76, 201, 240)"
+    ];
+
+    let randomColor = Math.floor(Math.random() * colors.length);
+
+
+    let count = -1;
 
     const createTile = index => {
       const tile = document.createElement("div");
 
       tile.classList.add("tile");
+      tile.onclick = e => handleOnClick(index);
       return tile;
-    }
+    };
 
     const createTiles = quantity => {
       Array.from(Array(quantity)).map((tile, index) => {
         wrapper.appendChild(createTile(index));
-      })
-    }
+      });
+    };
 
     const createGrid = () => {
       wrapper.innerHTML = '';
@@ -51,6 +70,20 @@
       wrapper.style.setProperty("--rows", rows);
 
       createTiles(columns * rows);
+    }
+
+    const handleOnClick = index => {
+      count = count + 1;
+      let randomColor = Math.floor(Math.random() * colors.length);
+
+      anime({
+        targets: ".tile",
+        backgroundColor: colors[randomColor],
+        delay: anime.stagger(50, {
+          grid: [columns, rows],
+          from: index
+        })
+      });
     }
 
     createGrid();
