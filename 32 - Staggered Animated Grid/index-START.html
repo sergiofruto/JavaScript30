@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Staggered Animated Grid</title>
+</head>
+<style>
+
+  body {
+    margin: 0;
+  }
+
+  #tiles {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    grid-template-rows: repeat(var(--rows), 1fr);
+    background-color: black;
+  }
+
+  .tile {
+    display: inline-block;
+    border: 1px solid blue;
+  }
+</style>
+<body>
+  <div id="tiles"></div>
+  <script>
+    const wrapper = document.querySelector('#tiles');
+
+    const createTile = index => {
+      const tile = document.createElement("div");
+
+      tile.classList.add("tile");
+      return tile;
+    }
+
+    const createTiles = quantity => {
+      Array.from(Array(quantity)).map((tile, index) => {
+        wrapper.appendChild(createTile(index));
+      })
+    }
+
+    const createGrid = () => {
+      wrapper.innerHTML = '';
+      let columns = Math.floor(document.body.clientWidth / 50);
+      let rows = Math.floor(document.body.clientHeight / 50);
+
+      wrapper.style.setProperty("--columns", columns);
+      wrapper.style.setProperty("--rows", rows);
+
+      createTiles(columns * rows);
+    }
+
+    createGrid();
+    window.onresize = () => createGrid();
+  </script>
+</body>
+</html>
