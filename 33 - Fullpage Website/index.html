@@ -48,7 +48,7 @@
   <main>
     <article class="main-article" data-index="0" data-status="active">
       <div class="article-image-section article-section">
-        <img src="https://images.unsplash.com/photo-1673018023859-261aa3ba77a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2113&q=80" alt="">
+        <!-- <img src="https://images.unsplash.com/photo-1673018023859-261aa3ba77a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2113&q=80" alt=""> -->
       </div>
       <div class="article-description-section article-section">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eveniet voluptates sed quod iste recusandae atque nesciunt corrupti, quidem debitis, cum sapiente, labore error praesentium ipsam numquam explicabo dolores itaque?
@@ -74,7 +74,7 @@
     </article>
     <article class="main-article" data-index="1" data-status="inactive">
       <div class="article-image-section article-section">
-        <img src="https://images.unsplash.com/photo-1519114056088-b877fe073a5e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3433&q=80" alt="">
+        <!-- <img src="https://images.unsplash.com/photo-1519114056088-b877fe073a5e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3433&q=80" alt=""> -->
       </div>
       <div class="article-description-section article-section">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eveniet voluptates sed quod iste recusandae atque nesciunt corrupti, quidem debitis, cum sapiente, labore error praesentium ipsam numquam explicabo dolores itaque?
@@ -84,13 +84,13 @@
         <h2>Gaston Rotger, Sony Alpha III</h2>
       </div>
       <div class="article-nav-section article-section">
-        <div class="nav-section-arrow left">
+        <div class="nav-section-arrow left" onclick="handleLeftClick()">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
           </svg>
         </div>
-        <div class="nav-section-arrow right">
+        <div class="nav-section-arrow right" onclick="handleRightClick()">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -100,7 +100,7 @@
     </article>
     <article class="main-article" data-index="2" data-status="inactive">
       <div class="article-image-section article-section">
-        <img src="https://images.unsplash.com/photo-1671523435843-e3cd426c24e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt="">
+        <!-- <img src="https://images.unsplash.com/photo-1671523435843-e3cd426c24e4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80" alt=""> -->
       </div>
       <div class="article-description-section article-section">
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci eveniet voluptates sed quod iste recusandae atque nesciunt corrupti, quidem debitis, cum sapiente, labore error praesentium ipsam numquam explicabo dolores itaque?
@@ -110,13 +110,13 @@
         <h2>Federico Abril, Canon Rebel 7T</h2>
       </div>
       <div class="article-nav-section article-section">
-        <div class="nav-section-arrow left">
+        <div class="nav-section-arrow left" onclick="handleLeftClick()">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
           </svg>
         </div>
-        <div class="nav-section-arrow right">
+        <div class="nav-section-arrow right" onclick="handleRightClick()">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6">
             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -125,38 +125,6 @@
       </div>
     </article>
   </main>
-  <script>
-    let activeIndex = 0;
-    const articles = document.getElementsByClassName("main-article");
-    console.log(articles);
-
-    const handleLeftClick = (e) => {
-      // increase active index
-      const nextIndex = activeIndex - 1 <= articles.length - 1 ? activeIndex - 1 : 0;
-
-      const currentArticle = document.querySelector(`[data-index="${activeIndex}"]`);
-      const nextArticle = document.querySelector(`[data-index="${nextIndex}"]`);
-      //active article becomes after
-      currentArticle.dataset.status = "after";
-      //next article becomes active
-      nextArticle.dataset.status = "active";
-      activeIndex = nextIndex;
-    }
-
-    const handleRightClick = (e) => {
-      // increase active index
-      const nextIndex = activeIndex + 1 <= articles.length - 1 ? activeIndex + 1 : 0;
-      const currentArticle = document.querySelector(`[data-index="${activeIndex}"]`);
-      const nextArticle = document.querySelector(`[data-index="${nextIndex}"]`);
-
-      console.log(nextIndex, currentArticle, nextArticle);
-      //active article becomes after
-      currentArticle.dataset.status = "before";
-      //next article becomes active
-      nextArticle.dataset.status = "active";
-      activeIndex = nextIndex;
-    }
-
-  </script>
+  <script src="scripts.js" async></script>
 </body>
 </html>
