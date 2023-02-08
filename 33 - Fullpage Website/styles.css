@@ -8,12 +8,12 @@
 }
 
 body {
+  background-color: var(--background-color);
   display: flex;
   flex-direction: column;
   height: 100vh;
-  margin: 0;
+  margin: 0px;
   overflow: hidden;
-  background-color: var(--background-color);
 }
 
 h1, h2, h3, a, p, span {
@@ -46,9 +46,12 @@ nav .nav-section {
   flex-basis: calc(100% / 3);
 }
 
-#nav-logo-section > svg { 
-  width: 45px;
+#nav-logo-section {
   justify-content: start;
+}
+
+#nav-logo-section > svg { 
+  width: 32px;
   fill: #FFFFFF;
   color: #FFFFFF;
 }
@@ -74,13 +77,32 @@ nav .nav-section {
 
 main {
   flex-grow: 1;
+  position: relative;
+  overflow: hidden;
 }
 
 main > article {
-  display: grid;
   height: 100%;
+  width: 100%;
+  display: grid;
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 2fr 1fr;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transition: transform 400ms ease;
+}
+
+main > article[data-status="inactive"] {
+  transform: translateX(-100%);
+}
+
+main > article[data-status="after"] {
+  transform: translateX(50%) scale(0);
+}
+
+main > article[data-status="before"] {
+  transform: translateX(-50%) scale(0);
 }
 
 main > article > .article-section {
@@ -104,13 +126,19 @@ main > article > .article-image-section img {
   object-position: 100% center;
 }
 
+main > article > .article-description-section {
+  display: flex;
+  align-items: end;
+  justify-content: end;
+}
+
 main > article > .article-description-section p {
   display: flex;
   padding: 2rem;
   align-items: end;
 }
 
-main>article>.article-title-section {
+main >article > .article-title-section {
   padding: 2rem;
 }
 
@@ -119,4 +147,27 @@ main > article > .article-title-section h2 {
   font-size: 64px;
   margin: 0 0 0 0;
   text-transform: uppercase;
+}
+
+main > article > .article-nav-section {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+main > article > .article-nav-section .nav-section-arrow {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+  cursor: pointer;
+}
+
+main>article>.article-nav-section .nav-section-arrow:first-child {
+  border-right: 1px solid var(--border-color);
+}
+
+main > article > .article-nav-section .nav-section-arrow svg {
+  width: 48px;
+  color: var(--base-white);
 }
