@@ -46,6 +46,11 @@ nav .nav-section {
   flex-basis: calc(100% / 3);
 }
 
+#nav-link-section a {
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
 #nav-logo-section {
   justify-content: start;
 }
